@@ -1,5 +1,7 @@
 package org.example.venta.database;
 
+import java.sql.Connection;
+
 public class ManagerConexion {
 
     private static ManagerConexion instance;
@@ -41,5 +43,10 @@ public class ManagerConexion {
             ex.printStackTrace();
         }
 
+    }
+
+    public Connection getConnection()
+    {
+        return conexion.getConn();
     }
 }

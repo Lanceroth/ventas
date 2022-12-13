@@ -7,9 +7,7 @@ import org.example.venta.dto.Producto;
 public class Productomg {
     private Productodao p;
 
-    public Productomg(Productodao p) {
-        this.p = p;
-    }
+    public Productomg() {this.p = new Productodao();}
 
     public void save(Producto pa) throws ManagerException {
 
@@ -28,12 +26,22 @@ public class Productomg {
     public void delete(Producto pa)throws ManagerException{
         try {
             Producto tp= p.selectbyid(pa);
-            if(p!=null){
+            if(tp!=null){
                 p.delete(pa);
             }
         }catch (Exception e){
             throw new ManagerException(e);
         }
+    }
+
+    public void selectAll() throws ManagerException{
+        try {
+            p.selectAll();
+        }catch (Exception e){
+            throw new ManagerException(e);
+
+        }
+
     }
 
 
