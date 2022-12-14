@@ -4,7 +4,9 @@ import org.example.exception.ManagerException;
 import org.example.venta.dao.Productodao;
 import org.example.venta.dto.Producto;
 
-public class Productomg {
+import java.util.List;
+
+public class Productomg implements ProdutmgInterfaz {
     private Productodao p;
 
     public Productomg() {this.p = new Productodao();}
@@ -34,9 +36,9 @@ public class Productomg {
         }
     }
 
-    public void selectAll() throws ManagerException{
+    public List<Producto> selectAll() throws ManagerException{
         try {
-            p.selectAll();
+            return p.selectAll();
         }catch (Exception e){
             throw new ManagerException(e);
 

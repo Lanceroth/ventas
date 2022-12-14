@@ -5,7 +5,9 @@ import org.example.venta.database.ManagerConexion;
 import org.example.venta.dto.Producto;
 import org.example.venta.mgr.Productomg;
 
-public class Productofac {
+import java.util.List;
+
+public class Productofac implements ProductInterfaz {
 
     private Productomg pmg;
 
@@ -37,12 +39,15 @@ public class Productofac {
         }
     }
 
-    public void selectAll() throws FacadeException{
+    public List<Producto> selectAll() throws FacadeException{
+        ManagerConexion.getInstance().open();
         try {
-            pmg.selectAll();
+           return pmg.selectAll();
         }catch (Exception e){
             throw new FacadeException(e);
 
+        }finally {
+            ManagerConexion.getInstance().close();
         }
 
     }

@@ -4,7 +4,9 @@ import org.example.exception.ExceptionController;
 import org.example.venta.dto.Producto;
 import org.example.venta.facade.Productofac;
 
-public class ProdControl {
+import java.util.List;
+
+public class ProdControl implements ControllerInterfaz {
     private Productofac pf;
 
     public ProdControl() {
@@ -30,15 +32,15 @@ public class ProdControl {
 
     }
 
-    public Producto selectAll() throws ExceptionController{
+    public List<Producto> selectAll() throws ExceptionController{
         try {
-            pf.selectAll();
+            return pf.selectAll();
         }catch (Exception E){
             throw new ExceptionController(E);
 
         }
 
-        return null;
+
     }
 
 }
